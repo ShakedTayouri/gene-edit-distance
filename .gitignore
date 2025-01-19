@@ -1,0 +1,8 @@
+ged.sbatch
+
+document*.txt
+*__pycache__/
+.nfs*
+.idea*
+workspace.xml
+venv/*
