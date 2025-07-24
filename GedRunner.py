@@ -44,16 +44,14 @@ class GedRunner:
     For each hit, calculate the hsps likelihood to merge to toxin.
     """
 
-    def __init__(self, base_query, description, classification, cut_points_detectors: list):
+    def __init__(self, base_query, description, cut_points_detectors: list):
         self.start_time = time.time()
         self.base_query = base_query
         self.description = description
-        self.classification = classification
         self.cut_points_detectors = []
 
         print("Query: " + str(self.base_query))
         print("Description: " + str(self.description))
-        print("Classification: " + str(self.classification))
 
         for cut_points_detector in cut_points_detectors:
             assert issubclass(type(cut_points_detector), BaseCutPointsDetector), \
@@ -195,13 +193,11 @@ class GedRunner:
             file.write(str(self.base_query) + "|" +
                        str(self.description).replace("|", "!") + "|" +
                        str(best_subset_score) + "|" +
-                       str(self.classification) + "|" +
                        str(self.get_time_running()) + "\n")
 
         print("Query: " + str(self.base_query) + "\n" +
               "Fasta Description: " + self.description + "\n" +
               "Best subset score: " + str(best_subset_score) + "\n" +
-              "Classification: " + self.classification + "\n" +
               "Time running: " + self.get_time_running() + "\n")
 
     def get_hsps_by_detectors(self, hsps, query):
