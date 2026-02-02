@@ -1,35 +1,31 @@
 # GED - Gene Edit Distance
 
-GED designed to assess the difficulty of assembling a toxin from a DNA sequence.
-
-1. [Use cases](#use-cases)
-2. [Usage and configurations](#-usage-and-configurations)
-    1. [Configuration file](#configuration-file)
-3. [Dataset information](#dataset_information)
-    1. [Input Format](#input_format)
-    2. [Database Requirements](database_equirements)
-4. [Gene editing tools](#gene-editing-tools)
-    1. [Hypothetical](#Hypothetical)
+GED designed to assess the difficulty of tranforming a query DNA sequence to a target DNA sequence.
 
 ## Use Cases
 
-For a given suspicious DNA sequence and a database of toxins, our algorithm will return score of toxicity and sequences
-similar to toxins from the DB that can be assembled.
+Given a suspicious DNA sequences and a database of toxins, the GED algorithm detects toxin-related fragments, estimates a toxicity score, and reports toxin-like sequences that can be assembled.  
+Optionally, GED can reorder and reorient detected fragments based on their locations in the target sequence, enabling analysis of obfuscated inputs where fragment order or orientation is altered.
 
-## Usage and Configurations
 
+## Blast definitions
 As part of our algorithm we use the [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi) framework.
-It requires [install BLAST](https://www.ncbi.nlm.nih.gov/books/NBK569861/) and dataset.
-Several parameters and paths must be properly configured. These are our core configurations and the only way to change
-them will be in the [config.ini](config.ini) file.
+**Hit** represents a sequence in a database that contains at least one segment similar to the query sequence.
+The matching segments within the query and target sequences, exhibiting a high degree of similarity, are called **HSP**. Each HSP is assigned a score, reflecting the degree of similarity between the respective sequences.
+Since our BLAST database consists toxin-related sequences, any hit may indicate the presence of potentially malicious elements within the query. The HSPs, in this context, represent fragments of the potential toxin that are aligned with the query sequence.
+
+
+### Usage and Configurations
+Blast requires [install BLAST](https://www.ncbi.nlm.nih.gov/books/NBK569861/) and dataset.
+Several parameters and paths must be properly configured. These are our core configurations and the only way to change them will be in the [config.ini](code/ged_flow/config.ini) "gene-edit-distance/config.ini" file.
 
 ```python
 [blast_paths]
-blastn_path = /ncbi-blast-2.11.0+/bin/blastn
-blastx_path = /ncbi-blast-2.11.0+/bin/blastx
+blastn_path = ./blast/bin/blastn
+blastx_path = ./blast/bin/blastx
 
 [blast_parameters]
-db = "Uniprot_ToxinVenom_DNA"
+db = "/data/blastDB/Uniprot_ToxinVenom_DNA"
 evalue = 0.01
 ```
 
@@ -39,7 +35,7 @@ the flow so make sure you know what they mean, if now you may always press skip 
 
 ## Configuration File
 
-The file [config.ini](config.ini) contains all the configurable parameters for GED, devided into sections:
+The file [config.ini](code/ged_flow/config.ini) contains all the configurable parameters for GED, devided into sections:
 
 ### blast_paths:
 
@@ -64,21 +60,12 @@ The file [config.ini](config.ini) contains all the configurable parameters for G
 - ```grp``` Gap removal probability.
 - ```prm:``` Gap removal penalty that substitutes some gap opening and extension penalties in the target sequence.
 
-### calculation_weights:
-
-- ```io_paths``` Fasta input path.
-- ```result``` Blast path file for the temp results.
+### ged_results:
+- ```ged_toxin_threshold``` GED score threshold for assigning the toxin flag.
 
 ## Dataset Information
 
 GED is designed to analyze DNA sequences in FASTA format. The dataset should meet the following requirements:
-
-### Input Format
-
-The input files must be in standard FASTA format, containing nucleotide sequences.
-Example to valid input is the file: [dataset.fasta](dataset.fasta) that contains 54 sequences derived from 10 toxins.
-The dataset includes 10 sequences obfuscated by introns and others modified by various restriction enzymes, providing a
-robust testbed to evaluate the GED algorithm.
 
 ### Database Requirements
 
@@ -93,7 +80,7 @@ In order to detect obfuscated toxins, GED looks for parts of the query that can 
 It then checks if these new sequences are similar to known toxins.  
 It does so using different modules that detect either cut points on the query sequence, or exons.
 
-### Hypothetical
+### Hypothetical Cut Point
 
 This simple module is not biologically correct and is used to test the flow of our algorithm.  
 It uses the data we get from the BLAST run on the query sequence, and returns the start and end of
@@ -101,34 +88,56 @@ the [HSPs](https://www.ncbi.nlm.nih.gov/books/NBK62051/) found as possible cutpo
 
 In future work, there will be support for restriction enzymes, introns, and CRISPR.
 
-# Running Examples
-
-## Single FASTA File
-
-To analyze a single FASTA file:
-
-```bash
-python SingleQueryMain.py "dataset.fasta" "dataset-results"
-```
-
-## Directory of FASTA Files
-
-```bash
-python MultiQueryMain.py "datasets" "datasets-results"
-```
+# Running Example
 
 ## Input Arguments
+The GED pipeline is executed from the command line and accepts the following arguments:
+### Positional Arguments
+* **`order_address` (FASTA file)**
+The input files must be in standard FASTA format, containing nucleotide sequences.
+Example to valid input is the file: [dataset_gapfuscation.fasta](/data/dataset_gapfuscation.fasta) that contains 44 sequences derived from 10 toxins.
+The dataset includes 10 sequences obfuscated by introns and others modified by various restriction enzymes, providing a
+robust testbed to evaluate the GED algorithm.
+* **`result_path`**
+Path to the location where the results will be saved.
+### Optional Arguments
+* **`--reorder`**
+  Enable HSP-based reordering of sequences.
+  When this flag is set, `--batch-size` **must** also be provided.
 
-* FASTA File or Directory: The input DNA sequence(s) in FASTA format.
-* Results Directory: Output location where results will be saved (one CSV file per input FASTA).
+* **`--batch-size`**
+  Batch size used during HSP-based reordering.
+  This argument is **required** when `--reorder` is enabled and must be a positive integer.
+
+## Example Usage
+
+```bash
+# Run GED on gapfuscation dataset
+python /code/ged_flow/Main.py /data/dataset_gapfuscation.fasta /results/dataset_gapfuscation_results.csv
+
+# Run GED on swapfuscation dataset
+python /code/ged_flow/Main.py /data/dataset_swapfuscation.fasta /results/dataset_swapfuscation_results.csv --reorder --batch-size=1
+
+# Run GED on recomfuscation dataset
+python /code/ged_flow/Main.py /data/dataset_recomfuscation.fasta /results/dataset_recomfuscation_results.csv --reorder --batch-size=2
+```
 
 # Expected Output
 
-For each input FASTA file, a corresponding CSV file is generated, containing:
+For FASTA file, a corresponding CSV file (path: /results/dataset_results.csv), containing:
 
-* Query: Query sequence identifier
-* Fasta Description: Description from the FASTA header
-* Best Subset Score: GED score for the most toxic-like assembled sequence
-* Time Running: Runtime for processing that sequence
+* Sequence Query: the query input.
+* Sequence Description: description from the FASTA header. The decription in the provided dataset file include information about the obfuscated toxin and the obfuscation method.
+* Sequence with gaps between HSPs: the query with gaps between the HSPs (the malicious parts of code). Base on this gaped sequence GED calculate score.
+* Ged Score: score for the most toxic-like assembled sequence. A higher score indicates a more suspicious (i.e., potentially toxic) sequence.
+* Toxin flag: Binary indicator of toxicity.  
+  A value of 1 indicates the sequence is flagged as toxin (GED score above the threshold); 0 indicates benign.
+* Time Running: Seconds runtime for processing that sequence.
 
-A higher score indicates a more suspicious (i.e., potentially toxic) sequence.
+# Defending Synthetic DNA Orders Against Splitting-Based Obfuscation
+GED is first introduced in the article "Defending Synthetic DNA Orders Against Splitting-Based Obfuscation". The algorithm is explained in detail in Section 4.4, with Figure 3.d illustrating the GED workflow.
+The process begins with [Collect HSPs per Hit](code/ged_flow/hit_collector/HitCollector.py), followed by [Generating Subsets Based on HSPs](code/ged_flow/SubsetGenerator.py). It then proceeds through the [cut point detection and merge](code/ged_flow/cutpoints_detection/HypotheticalCutPointsDetector.py) step, and finally selects the alignment with the best score.
+
+As described in the article, GED uses two types of scoring penalties:
+* [Gap removal penalty](code/ged_flow/score_calculator/ScoreByGapPenalty.py)
+* [Adjusted alignment score](code/ged_flow/score_calculator/ScoreByAdjustedAlignment.py)
