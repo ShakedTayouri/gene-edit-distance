@@ -3,7 +3,7 @@ import argparse
 import logging
 from typing import List, Tuple
 
-from GedRunner import GedRunner
+from GedRunner import GedRunner, GED_TOXIN_THRESHOLD
 from cutpoints_detection.HypotheticalCutPointsDetector import HypotheticalCutPointsDetector
 from io_utils.FastaReader import FastaReader
 from HSPsReordering import HSPsReordering
@@ -61,6 +61,7 @@ def load_records(fasta_path: str) -> List[SequenceRecord]:
 
 def run_without_reorder(
         records: List[SequenceRecord],
+        batch_size: int,
         result_path: str,
         blast_runner
 ) -> None:
@@ -74,8 +75,8 @@ def run_without_reorder(
             blast_runner
         )
 
-        subset, score = runner.run_ged()
-        runner.save_ged_result(result_path, subset, score)
+        subset, score, hit_data = runner.run_ged()
+        runner.save_ged_result(batch_size, result_path, subset, score, hit_data)
 
 
 def run_with_reorder(
@@ -94,6 +95,7 @@ def run_with_reorder(
         best_score = float("-inf")
         best_subset = None
         best_runner = None
+        hits_data = []
 
         reordering_runner = HSPsReordering(queries, blast_runner)
         reordered_queries = reordering_runner.run_reorder_query()
@@ -106,7 +108,11 @@ def run_with_reorder(
                 blast_runner
             )
 
-            subset, score = runner.run_ged()
+            subset, score, hit_data = runner.run_ged()
+
+            for hit in hit_data:
+                hits_data.append((*hit, reordered_query, hsp_count, len(reordered_query)))
+
             score -= PENALTY_REMOVAL * hsp_count
 
             if score > best_score:
@@ -114,20 +120,14 @@ def run_with_reorder(
                 best_subset = subset
                 best_runner = runner
 
-            if best_score > 200:
+            if best_score > GED_TOXIN_THRESHOLD:
                 break
 
         if best_runner is None:
             logging.warning("No valid GED result for batch starting at %d", i)
             continue
 
-        best_runner.save_ged_result(
-            result_path,
-            best_subset,
-            best_score,
-            queries,
-            descriptions
-        )
+        best_runner.save_ged_result(batch_size, result_path, best_subset, best_score, hits_data, queries, descriptions)
 
 
 def main() -> None:
@@ -148,6 +148,7 @@ def main() -> None:
     else:
         run_without_reorder(
             records=records,
+            batch_size=args.batch_size,
             result_path=args.result_path,
             blast_runner=blast_runner
         )
