@@ -28,7 +28,7 @@ def match_strings(main_string, search_strings):
 
 
 class GedRunner:
-    def __init__(self, base_query, description, cut_points_detectors, blast_runner):
+    def __init__(self, batch_size, base_query, description, cut_points_detectors, blast_runner):
         self.start_time = time.time()
         self.base_query = base_query
         self.description = description
@@ -39,7 +39,7 @@ class GedRunner:
             assert issubclass(type(detector), BaseCutPointsDetector)
             self.cut_points_detectors.append(detector)
 
-        self.maximum_active_cut_points = 3  # or pass via config
+        self.maximum_active_cut_points = batch_size
 
     def get_time_running(self):
         return str(time.time() - self.start_time)

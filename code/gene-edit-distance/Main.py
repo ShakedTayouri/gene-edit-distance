@@ -102,7 +102,7 @@ def run_with_reorder(
 
         for reordered_query, hsp_count in reordered_queries:
             runner = GedRunner(
-                reordered_query,
+                batch_size, reordered_query,
                 "> Reorder query",
                 [HypotheticalCutPointsDetector()],
                 blast_runner
