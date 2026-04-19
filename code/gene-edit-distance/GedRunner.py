@@ -1,16 +1,13 @@
-# ged_runner.py
-import os
-import time
+import configparser
 import csv
+import os
 import re
-from functools import reduce
+import time
 
 from SubsetGenerator import generate_subsets
 from cutpoints_detection.AbstractCutPointsDetector import BaseCutPointsDetector
 from hit_collector.HitCollector import collect_hits
 from score_calculator.ScoreByAdjustedAlignment import calculate_score_by_adjusted_alignment
-
-import configparser
 
 config = configparser.ConfigParser()
 config.read(r"config.ini")
@@ -62,10 +59,9 @@ class GedRunner:
                 best_subset_score = max_score
                 best_subset = hsp_with_max_score
 
-            hit_data.append((hit, best_subset, best_subset_score, 0, hit_start - time.time(), max_score,
-                             hsp_with_max_score, None))
-
             if best_subset_score > GED_TOXIN_THRESHOLD:
+                hit_data.append((hit, best_subset, best_subset_score, 0, time.time()-hit_start, max_score,
+                                 hsp_with_max_score))
                 break
 
             if len(hit.hsps) == 1:
@@ -107,8 +103,8 @@ class GedRunner:
                 if best_subset_score > GED_TOXIN_THRESHOLD:
                     break
 
-            hit_data.append((hit, best_subset, best_subset_score, len(subsets), hit_start - time.time(),
-                             max_score, hsp_with_max_score, subset_hit_ids))
+            hit_data.append((hit, best_subset, best_subset_score, len(subsets), time.time() - hit_start,
+                             max_score, hsp_with_max_score))
 
         return best_subset, best_subset_score, hit_data
 
@@ -118,8 +114,9 @@ class GedRunner:
             cut_points.extend(detector.detect_query_cut_points(hsps, query))
         return sorted(cut_points)
 
-    def save_ged_result(self, batch_size, final_result_path, best_subset, best_subset_score, hits_data, base_queries=None,
-                        descriptions=None, reorder_data=None):
+    def save_ged_result(self, batch_size, final_result_path, best_subset, best_subset_score, hits_data,
+                        base_queries=None,
+                        descriptions=None):
         if base_queries is None:
             base_queries = [self.base_query]
         if descriptions is None:
@@ -148,10 +145,18 @@ class GedRunner:
                     "Toxin Flag",
                     "Running Time (seconds)",
                     "Hit ID",
-                    "Hsps amount"
+                    "Hit length"
+                    "Hsps amount",
+                    "hsp_with_max_score",
+                    "hit_time",
+                    "subsets_amount"
+                    "hit_best_subset",
+                    "hit_best_subset_score",
+                    "reordered_query", "hsp_count", "reordered_query_length"
                 ])
 
-            for hit, best_subset, best_subset_score, subsets_amount, hit_time, max_score, hsp_with_max_score, subset_hit_ids in hits_data:
+            for (hit, hit_best_subset, hit_best_subset_score, subsets_amount, hit_time, max_score, hsp_with_max_score,
+                 reordered_query, hsp_count, reordered_query_length) in hits_data:
                 writer.writerow([
                     batch_size,
                     toxin_ids,
@@ -163,6 +168,12 @@ class GedRunner:
                     toxin_flag,
                     self.get_time_running(),
                     hit.id,
+                    hit.length,
                     len(hit.hsps),
-
+                    hsp_with_max_score,
+                    hit_time,
+                    subsets_amount,
+                    hit_best_subset,
+                    hit_best_subset_score,
+                    reordered_query, hsp_count, reordered_query_length
                 ])

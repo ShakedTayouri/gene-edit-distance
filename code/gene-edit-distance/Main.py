@@ -95,7 +95,6 @@ def run_with_reorder(
         best_score = float("-inf")
         best_subset = None
         best_runner = None
-        reorder_data = []
         hits_data = []
 
         reordering_runner = HSPsReordering(queries, blast_runner)
@@ -110,10 +109,11 @@ def run_with_reorder(
             )
 
             subset, score, hit_data = runner.run_ged()
-            hits_data.append(hit_data)
-            score -= PENALTY_REMOVAL * hsp_count
 
-            reorder_data.append((reordered_query, hsp_count, len(reordered_query), subset, score))
+            for hit in hit_data:
+                hits_data.append((*hit, reordered_query, hsp_count, len(reordered_query)))
+
+            score -= PENALTY_REMOVAL * hsp_count
 
             if score > best_score:
                 best_score = score
@@ -127,8 +127,7 @@ def run_with_reorder(
             logging.warning("No valid GED result for batch starting at %d", i)
             continue
 
-        best_runner.save_ged_result(batch_size, result_path, best_subset, best_score, hits_data, queries, descriptions,
-                                    reorder_data)
+        best_runner.save_ged_result(batch_size, result_path, best_subset, best_score, hits_data, queries, descriptions)
 
 
 def main() -> None:

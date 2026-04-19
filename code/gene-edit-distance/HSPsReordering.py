@@ -40,6 +40,14 @@ class HSPsReordering:
             print("Not match find in BLAST at all")
             return set()
 
+        hit_id_to_sub_target_data = dict(
+            sorted(
+                hit_id_to_sub_target_data.items(),
+                key=lambda item: max(hsp.bitscore for hsp in item[1]),
+                reverse=True
+            )
+        )
+
         hit_id_to_new_string = {}
         for hit_id, sub_target_data in hit_id_to_sub_target_data.items():
             if len(sub_target_data) > 1:
@@ -58,6 +66,7 @@ class HSPsReordering:
         )
 
         concatenated_result = []
+        hsps_amount=0
 
         for i, hsp in enumerate(sorted_data):
             if i > 0:
@@ -66,7 +75,9 @@ class HSPsReordering:
             # Normalize orientation of HSPs
             if hsp.target_strand == -1:
                 concatenated_result.append(reverse_complement(hsp.data))
+                hsps_amount +=1
             else:
                 concatenated_result.append(hsp.data)
+                hsps_amount += 1
 
-        return "".join(concatenated_result), len(concatenated_result)
+        return "".join(concatenated_result), hsps_amount
