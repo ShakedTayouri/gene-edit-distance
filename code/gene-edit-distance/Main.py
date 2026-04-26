@@ -1,8 +1,11 @@
 import os
 import argparse
 import logging
+import re
 import time
 from typing import List, Tuple
+
+import pandas as pd
 
 from GedRunner import GedRunner, GED_TOXIN_THRESHOLD
 from cutpoints_detection.HypotheticalCutPointsDetector import HypotheticalCutPointsDetector
@@ -88,12 +91,26 @@ def run_with_reorder(
 ) -> None:
     logging.info("Running GED with reordering (batch_size=%d)", batch_size)
 
-    for i in range(0, len(records), batch_size):
-        query_start_time = time.time()
+    processed_ids = set()
+    if os.path.exists(result_path):
+        logging.info("Loading existing results from %s", result_path)
+        df_existing = pd.read_csv(result_path)
+        if "Toxin IDs" in df_existing.columns:
+            processed_ids = set(df_existing["Toxin IDs"].astype(str))
+        else:
+            logging.warning("'Toxin IDs' column not found in existing results")
 
+    for i in range(0, len(records), batch_size):
         batch = records[i:i + batch_size]
         queries = [q for q, _ in batch]
         descriptions = [d for _, d in batch]
+
+        toxin_ids = [re.search(r'\|([^|]+)\|', header).group(1) for header in descriptions]
+        if str(toxin_ids) in processed_ids:
+            continue
+
+        logging.info("Processing batch %d from %d, IDs=%s", i // batch_size, len(records) // batch_size, toxin_ids)
+        query_start_time = time.time()
 
         best_score = float("-inf")
         best_subset = None
@@ -132,7 +149,8 @@ def run_with_reorder(
 
         query_end_time = time.time()
 
-        best_runner.save_ged_result(query_end_time - query_start_time, batch_size, result_path, best_subset, best_score, hits_data, queries, descriptions)
+        best_runner.save_ged_result(query_end_time - query_start_time, batch_size, result_path, best_subset, best_score,
+                                    hits_data, queries, descriptions)
 
 
 def main() -> None:
