@@ -1,6 +1,7 @@
 import os
 import argparse
 import logging
+import time
 from typing import List, Tuple
 
 from GedRunner import GedRunner, GED_TOXIN_THRESHOLD
@@ -88,6 +89,8 @@ def run_with_reorder(
     logging.info("Running GED with reordering (batch_size=%d)", batch_size)
 
     for i in range(0, len(records), batch_size):
+        query_start_time = time.time()
+
         batch = records[i:i + batch_size]
         queries = [q for q, _ in batch]
         descriptions = [d for _, d in batch]
@@ -127,7 +130,9 @@ def run_with_reorder(
             logging.warning("No valid GED result for batch starting at %d", i)
             continue
 
-        best_runner.save_ged_result(batch_size, result_path, best_subset, best_score, hits_data, queries, descriptions)
+        query_end_time = time.time()
+
+        best_runner.save_ged_result(query_end_time - query_start_time, batch_size, result_path, best_subset, best_score, hits_data, queries, descriptions)
 
 
 def main() -> None:

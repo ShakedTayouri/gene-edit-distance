@@ -29,7 +29,6 @@ def match_strings(main_string, search_strings):
 
 class GedRunner:
     def __init__(self, batch_size, base_query, description, cut_points_detectors, blast_runner):
-        self.start_time = time.time()
         self.base_query = base_query
         self.description = description
         self.blast_runner = blast_runner
@@ -40,9 +39,6 @@ class GedRunner:
             self.cut_points_detectors.append(detector)
 
         self.maximum_active_cut_points = batch_size
-
-    def get_time_running(self):
-        return str(time.time() - self.start_time)
 
     def run_ged(self):
         blast_query_results = self.blast_runner.run_blast(self.base_query)
@@ -60,7 +56,7 @@ class GedRunner:
                 best_subset = hsp_with_max_score
 
             if best_subset_score > GED_TOXIN_THRESHOLD:
-                hit_data.append((hit, best_subset, best_subset_score, 0, time.time()-hit_start, max_score,
+                hit_data.append((hit, best_subset, best_subset_score, 0, time.time() - hit_start, max_score,
                                  hsp_with_max_score))
                 break
 
@@ -114,7 +110,7 @@ class GedRunner:
             cut_points.extend(detector.detect_query_cut_points(hsps, query))
         return sorted(cut_points)
 
-    def save_ged_result(self, batch_size, final_result_path, best_subset, best_subset_score, hits_data,
+    def save_ged_result(self, running_time, batch_size, final_result_path, best_subset, best_subset_score, hits_data,
                         base_queries=None,
                         descriptions=None):
         if base_queries is None:
@@ -145,11 +141,11 @@ class GedRunner:
                     "Toxin Flag",
                     "Running Time (seconds)",
                     "Hit ID",
-                    "Hit length"
+                    "Hit length",
                     "Hsps amount",
                     "hsp_with_max_score",
                     "hit_time",
-                    "subsets_amount"
+                    "subsets_amount",
                     "hit_best_subset",
                     "hit_best_subset_score",
                     "reordered_query", "hsp_count", "reordered_query_length"
@@ -166,7 +162,7 @@ class GedRunner:
                     best_subset,
                     best_subset_score,
                     toxin_flag,
-                    self.get_time_running(),
+                    running_time,
                     hit.id,
                     hit.length,
                     len(hit.hsps),
