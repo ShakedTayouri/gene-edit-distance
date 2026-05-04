@@ -1,4 +1,5 @@
 from Bio.Seq import reverse_complement
+from collections import OrderedDict
 
 from hit_collector.HitCollector import collect_hits
 from utils.TargetHspData import TargetHspData
@@ -14,7 +15,7 @@ class HSPsReordering:
         self.blast_runner = blast_runner
 
     def run_reorder_query(self):
-        hit_id_to_sub_target_data = {}
+        hit_id_to_sub_target_data = OrderedDict()
 
         for query in self.query_list:
             blast_query_results = self.blast_runner.run_blast(query)
@@ -53,7 +54,7 @@ class HSPsReordering:
             if len(sub_target_data) > 1:
                 hit_id_to_new_string[hit_id] = self.reorder_hsp_data(sub_target_data)
 
-        return set(hit_id_to_new_string.values())
+        return hit_id_to_new_string.values()
 
     def reorder_hsp_data(self, hsp_data_list, separator='-' * 10):
         if not hsp_data_list:
@@ -66,7 +67,7 @@ class HSPsReordering:
         )
 
         concatenated_result = []
-        hsps_amount=0
+        hsps_amount = 0
 
         for i, hsp in enumerate(sorted_data):
             if i > 0:
@@ -75,7 +76,7 @@ class HSPsReordering:
             # Normalize orientation of HSPs
             if hsp.target_strand == -1:
                 concatenated_result.append(reverse_complement(hsp.data))
-                hsps_amount +=1
+                hsps_amount += 1
             else:
                 concatenated_result.append(hsp.data)
                 hsps_amount += 1
