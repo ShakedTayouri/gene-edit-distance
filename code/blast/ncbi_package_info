@@ -1,298 +1,289 @@
 PACKAGE_NAME: blast
-PACKAGE_VERSION: 2.11.0
-PACKAGE_SIGNATURE: ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
-PACKAGE_CONFIG: Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+PACKAGE_VERSION: 2.17.0
+PACKAGE_SIGNATURE: MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+PACKAGE_CONFIG: Win64_22 : plain : vs2022 static 64 ReleaseDLL
 
->>>>>  blastp
+>>>>>  blastp.exe
 
-blastp: 2.11.0+
- Package: blast 2.11.0, build Oct  6 2020 03:24:05
- Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
- Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
- Build-Date:  Oct  6 2020 04:07:16
- Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
- Subversion-Revision:  617724
- Production-Version:  20200404
- Built-As:  blastp
+blastp: 2.17.0+
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
 
 
 
->>>>>  blastn
+>>>>>  blastn.exe
 
-blastn: 2.11.0+
- Package: blast 2.11.0, build Oct  6 2020 03:24:05
- Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
- Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
- Build-Date:  Oct  6 2020 04:06:34
- Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
- Subversion-Revision:  617724
- Production-Version:  20200404
- Built-As:  blastn
+blastn: 2.17.0+
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
 
 
 
->>>>>  blastx
+>>>>>  blastx.exe
 
-blastx: 2.11.0+
- Package: blast 2.11.0, build Oct  6 2020 03:24:05
- Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
- Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
- Build-Date:  Oct  6 2020 04:07:26
- Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
- Subversion-Revision:  617724
- Production-Version:  20200404
- Built-As:  blastx
+blastx: 2.17.0+
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
 
 
 
->>>>>  tblastn
+>>>>>  tblastn.exe
 
-tblastn: 2.11.0+
- Package: blast 2.11.0, build Oct  6 2020 03:24:05
- Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
- Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
- Build-Date:  Oct  6 2020 04:02:14
- Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
- Subversion-Revision:  617724
- Production-Version:  20200404
- Built-As:  tblastn
+tblastn: 2.17.0+
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
 
 
 
->>>>>  tblastx
+>>>>>  tblastx.exe
 
-tblastx: 2.11.0+
- Package: blast 2.11.0, build Oct  6 2020 03:24:05
- Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
- Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
- Build-Date:  Oct  6 2020 04:02:18
- Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
- Subversion-Revision:  617724
- Production-Version:  20200404
- Built-As:  tblastx
+tblastx: 2.17.0+
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
 
 
 
->>>>>  psiblast
+>>>>>  psiblast.exe
 
-psiblast: 2.11.0+
- Package: blast 2.11.0, build Oct  6 2020 03:24:05
- Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
- Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
- Build-Date:  Oct  6 2020 03:58:19
- Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
- Subversion-Revision:  617724
- Production-Version:  20200404
- Built-As:  psiblast
+psiblast: 2.17.0+
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
 
 
 
->>>>>  rpsblast
+>>>>>  rpsblast.exe
 
-rpsblast: 2.11.0+
- Package: blast 2.11.0, build Oct  6 2020 03:24:05
- Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
- Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
- Build-Date:  Oct  6 2020 03:59:48
- Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
- Subversion-Revision:  617724
- Production-Version:  20200404
- Built-As:  rpsblast
+rpsblast: 2.17.0+
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
 
 
 
->>>>>  rpstblastn
+>>>>>  rpstblastn.exe
 
-rpstblastn: 2.11.0+
- Package: blast 2.11.0, build Oct  6 2020 03:24:05
- Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
- Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
- Build-Date:  Oct  6 2020 03:59:58
- Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
- Subversion-Revision:  617724
- Production-Version:  20200404
- Built-As:  rpstblastn
+rpstblastn: 2.17.0+
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
 
 
 
->>>>>  makembindex
+>>>>>  makembindex.exe
 
-makembindex: 2.11.0
- Package: blast 2.11.0, build Oct  6 2020 03:24:05
- Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
- Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
- Build-Date:  Oct  6 2020 03:57:08
- Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
- Subversion-Revision:  617724
- Production-Version:  20200404
- Built-As:  makembindex
+makembindex: 2.17.0
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
+
+ NCBI C++ Toolkit: 29.0.0
+   Build-Date:  Jul  1 2025 08:56:53
+   Stable-Components-Version:  29
+   Production-Version:  20250122
 
 
 
->>>>>  segmasker
+
+>>>>>  segmasker.exe
 
 segmasker: 1.0.0
- Package: blast 2.11.0, build Oct  6 2020 03:24:05
- Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
- Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
- Build-Date:  Oct  6 2020 04:00:50
- Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
- Subversion-Revision:  617724
- Production-Version:  20200404
- Built-As:  segmasker
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
 
 
 
->>>>>  dustmasker
+>>>>>  dustmasker.exe
 
 dustmasker: 1.0.0
- Package: blast 2.11.0, build Oct  6 2020 03:24:05
- Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
- Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
- Build-Date:  Oct  6 2020 04:08:05
- Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
- Subversion-Revision:  617724
- Production-Version:  20200404
- Built-As:  dustmasker
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
 
 
 
->>>>>  windowmasker
+>>>>>  windowmasker.exe
 
 windowmasker: 1.0.0
- Package: blast 2.11.0, build Oct  6 2020 03:24:05
- Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
- Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
- Build-Date:  Oct  6 2020 04:03:02
- Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
- Subversion-Revision:  617724
- Production-Version:  20200404
- Built-As:  windowmasker
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
 
  window-masker-algorithm:1.0.0
 
  windowmasker-statistics-algorithm-version:1.0.0
 
- windowmasker-statistics-format-version:ascii 1.0.0
+ windowmasker-statistics-format-version:ascii 1.1.0
 
- windowmasker-statistics-format-version:binary 1.0.0
+ windowmasker-statistics-format-version:binary 1.1.0
 
- windowmasker-statistics-format-version:oascii 1.0.0
+ windowmasker-statistics-format-version:oascii 1.1.0
 
- windowmasker-statistics-format-version:obinary 1.0.0
-
-
-
->>>>>  deltablast
-
-deltablast: 2.11.0+
- Package: blast 2.11.0, build Oct  6 2020 03:24:05
- Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
- Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
- Build-Date:  Oct  6 2020 04:08:04
- Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
- Subversion-Revision:  617724
- Production-Version:  20200404
- Built-As:  deltablast
+ windowmasker-statistics-format-version:obinary 1.1.0
 
 
 
->>>>>  makeblastdb
+>>>>>  deltablast.exe
 
-makeblastdb: 2.11.0+
- Package: blast 2.11.0, build Oct  6 2020 03:24:05
- Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
- Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
- Build-Date:  Oct  6 2020 03:56:45
- Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
- Subversion-Revision:  617724
- Production-Version:  20200404
- Built-As:  makeblastdb
+deltablast: 2.17.0+
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
 
 
 
->>>>>  blastdbcmd
+>>>>>  makeblastdb.exe
 
-blastdbcmd: 2.11.0+
- Package: blast 2.11.0, build Oct  6 2020 03:24:05
- Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
- Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
- Build-Date:  Oct  6 2020 04:05:41
- Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
- Subversion-Revision:  617724
- Production-Version:  20200404
- Built-As:  blastdbcmd
+makeblastdb: 2.17.0+
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
 
 
 
->>>>>  blastdb_aliastool
+>>>>>  blastdbcmd.exe
 
-blastdb_aliastool: 2.11.0+
- Package: blast 2.11.0, build Oct  6 2020 03:24:05
- Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
- Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
- Build-Date:  Oct  6 2020 04:05:17
- Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
- Subversion-Revision:  617724
- Production-Version:  20200404
- Built-As:  blastdb_aliastool
+blastdbcmd: 2.17.0+
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
 
 
 
->>>>>  convert2blastmask
+>>>>>  blastdb_aliastool.exe
 
-convert2blastmask: 2.11.0+
- Package: blast 2.11.0, build Oct  6 2020 03:24:05
- Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
- Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
- Build-Date:  Oct  6 2020 04:07:56
- Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
- Subversion-Revision:  617724
- Production-Version:  20200404
- Built-As:  convert2blastmask
+blastdb_aliastool: 2.17.0+
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
 
 
 
->>>>>  blastdbcheck
+>>>>>  convert2blastmask.exe
 
-blastdbcheck: 2.11.0+
- Package: blast 2.11.0, build Oct  6 2020 03:24:05
- Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
- Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
- Build-Date:  Oct  6 2020 04:05:34
- Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
- Subversion-Revision:  617724
- Production-Version:  20200404
- Built-As:  blastdbcheck
+convert2blastmask: 2.17.0+
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
 
 
 
->>>>>  makeprofiledb
+>>>>>  blastdbcheck.exe
 
-makeprofiledb: 2.11.0+
- Package: blast 2.11.0, build Oct  6 2020 03:24:05
- Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
- Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
- Build-Date:  Oct  6 2020 03:57:10
- Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
- Subversion-Revision:  617724
- Production-Version:  20200404
- Built-As:  makeprofiledb
+blastdbcheck: 2.17.0+
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
 
 
 
->>>>>  blast_formatter
+>>>>>  makeprofiledb.exe
 
-blast_formatter: 2.11.0+
- Package: blast 2.11.0, build Oct  6 2020 03:24:05
- Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
- Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
- Build-Date:  Oct  6 2020 04:04:44
- Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
- Subversion-Revision:  617724
- Production-Version:  20200404
- Built-As:  blast_formatter
+makeprofiledb: 2.17.0+
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
 
+
+
+>>>>>  blast_formatter.exe
+
+blast_formatter: 2.17.0+
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
+
+
+
+>>>>>  blastn_vdb.exe
+
+blastn_vdb: 2.17.0+
+ncbi-vdb: 3.2.1
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
+
+
+
+>>>>>  tblastn_vdb.exe
+
+tblastn_vdb: 2.17.0+
+ncbi-vdb: 3.2.1
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
+
+
+
+>>>>>  blast_formatter_vdb.exe
+
+blast_formatter_vdb: 2.17.0+
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
+
+
+
+>>>>>  blast_vdb_cmd.exe
+
+blast_vdb_cmd: 2.17.0+
+ Package: blast 2.17.0, build Jul  1 2025 08:57:20
+ Package-Config:  vs2022 static 64 ReleaseDLL
+ Build-Signature:  MSVC_1700-ReleaseDLLMT--i386-pc-x64-MSCOREMAKE307
+ GI-64bit:  TRUE
+ Build-Date:  Jul  1 2025 08:57:20
 
 
 

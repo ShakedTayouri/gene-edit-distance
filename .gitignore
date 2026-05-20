@@ -1,8 +1,5 @@
-ged.sbatch
-
-document*.txt
-*__pycache__/
-.nfs*
-.idea*
-workspace.xml
-venv/*
+/data/
+/code/blast/
+/code/gene-edit-distance/results/
+__pycache__/
+.idea/

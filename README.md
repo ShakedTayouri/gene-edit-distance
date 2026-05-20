@@ -17,7 +17,7 @@ Since our BLAST database consists toxin-related sequences, any hit may indicate 
 
 ### Usage and Configurations
 Blast requires [install BLAST](https://www.ncbi.nlm.nih.gov/books/NBK569861/) and dataset.
-Several parameters and paths must be properly configured. These are our core configurations and the only way to change them will be in the [config.ini](code/ged_flow/config.ini) "gene-edit-distance/config.ini" file.
+Several parameters and paths must be properly configured. These are our core configurations and the only way to change them will be in the [config.ini](code/gene-edit-distance/config.ini) "gene-edit-distance/config.ini" file.
 
 ```python
 [blast_paths]
@@ -35,7 +35,7 @@ the flow so make sure you know what they mean, if now you may always press skip 
 
 ## Configuration File
 
-The file [config.ini](code/ged_flow/config.ini) contains all the configurable parameters for GED, devided into sections:
+The file [config.ini](code/gene-edit-distance/config.ini) contains all the configurable parameters for GED, devided into sections:
 
 ### blast_paths:
 
@@ -95,7 +95,7 @@ The GED pipeline is executed from the command line and accepts the following arg
 ### Positional Arguments
 * **`order_address` (FASTA file)**
 The input files must be in standard FASTA format, containing nucleotide sequences.
-Example to valid input is the file: [dataset_gapfuscation.fasta](/data/dataset_gapfuscation.fasta) that contains 44 sequences derived from 10 toxins.
+Example to valid input is the file: [dataset_gapfuscation.fasta](/data/dataset_gapfuscation.fasta) that contains 54 sequences derived from 10 toxins.
 The dataset includes 10 sequences obfuscated by introns and others modified by various restriction enzymes, providing a
 robust testbed to evaluate the GED algorithm.
 * **`result_path`**
@@ -113,13 +113,13 @@ Path to the location where the results will be saved.
 
 ```bash
 # Run GED on gapfuscation dataset
-python /code/ged_flow/Main.py /data/dataset_gapfuscation.fasta /results/dataset_gapfuscation_results.csv
+python /code/gene-edit-distance/Main.py /data/dataset_gapfuscation.fasta /results/dataset_gapfuscation_results.csv
 
 # Run GED on swapfuscation dataset
-python /code/ged_flow/Main.py /data/dataset_swapfuscation.fasta /results/dataset_swapfuscation_results.csv --reorder --batch-size=1
+python /code/gene-edit-distance/Main.py /data/dataset_swapfuscation.fasta /results/dataset_swapfuscation_results.csv --reorder --batch-size=1
 
 # Run GED on recomfuscation dataset
-python /code/ged_flow/Main.py /data/dataset_recomfuscation.fasta /results/dataset_recomfuscation_results.csv --reorder --batch-size=2
+python /code/gene-edit-distance/Main.py /data/dataset_recomfuscation.fasta /results/dataset_recomfuscation_results.csv --reorder --batch-size=2
 ```
 
 # Expected Output
@@ -136,8 +136,8 @@ For FASTA file, a corresponding CSV file (path: /results/dataset_results.csv), c
 
 # Defending Synthetic DNA Orders Against Splitting-Based Obfuscation
 GED is first introduced in the article "Defending Synthetic DNA Orders Against Splitting-Based Obfuscation". The algorithm is explained in detail in Section 4.4, with Figure 3.d illustrating the GED workflow.
-The process begins with [Collect HSPs per Hit](code/ged_flow/hit_collector/HitCollector.py), followed by [Generating Subsets Based on HSPs](code/ged_flow/SubsetGenerator.py). It then proceeds through the [cut point detection and merge](code/ged_flow/cutpoints_detection/HypotheticalCutPointsDetector.py) step, and finally selects the alignment with the best score.
+The process begins with [Collect HSPs per Hit](code/gene-edit-distance/hit_collector/HitCollector.py), followed by [Generating Subsets Based on HSPs](code/gene-edit-distance/SubsetGenerator.py). It then proceeds through the [cut point detection and merge](code/gene-edit-distance/cutpoints_detection/HypotheticalCutPointsDetector.py) step, and finally selects the alignment with the best score.
 
 As described in the article, GED uses two types of scoring penalties:
-* [Gap removal penalty](code/ged_flow/score_calculator/ScoreByGapPenalty.py)
-* [Adjusted alignment score](code/ged_flow/score_calculator/ScoreByAdjustedAlignment.py)
+* [Gap removal penalty](code/gene-edit-distance/score_calculator/ScoreByGapPenalty.py)
+* [Adjusted alignment score](code/gene-edit-distance/score_calculator/ScoreByAdjustedAlignment.py)
